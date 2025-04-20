@@ -12,19 +12,18 @@ const colors = [
 
 let columns = 0;
 let rows = 0;
-let count = 0;
+let toggled = false;
 
 const handleOnClick = (index) => {
-  count += 1;
+  toggled = !toggled;
   anime({
     targets: ".tile",
-    backgroundColor: colors[count % (colors.length - 1)],
+    opacity: toggled ? 0 : 1,
     delay: anime.stagger(50, {
       grid: [columns, rows],
       from: index,
     }),
   });
-  console.log("click");
 };
 
 const createTile = (index) => {
